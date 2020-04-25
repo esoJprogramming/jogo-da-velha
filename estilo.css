@@ -1,0 +1,33 @@
+body {
+  background: rgb(20, 189, 172); 
+}
+
+#jogo{
+  width:603px;
+  height:600px;
+  border:solid 5px rgb(13, 161, 146);
+}
+
+.linha{
+  color: rgb(13, 161, 146);
+  height:200px;
+  border-bottom:solid 1px;
+}
+
+.casa{
+  width:200px;
+  height:100%;
+  border-right:solid 1px;
+  float:left;
+}
+
+.alinha {
+  display: flex;
+}
+
+#resultado {
+  font-size: 20px;
+  margin: 15px;
+}
+
+
