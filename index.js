@@ -24,18 +24,19 @@ jogo.addEventListener('click', main);
 function main(e) {
   var casa = e.target;
 
-  var bg = casa.style.background;
+  if(e.target.id != 'jogo') {
+    var bg = casa.style.background;
 
-  if(bg === '' || bg === 'none') {
+    if(bg === '' || bg === 'none') {
     casa.style.background = (jogador == 1? 'url(assets/bola.svg) no-repeat center':'url(assets/xis.svg) no-repeat center');
 
+    verificaTabuleiro();
+    
     jogador = (jogador == 1 ? 2 : 1);
 
     verificaEmpate();
+    }
   }
-
-  verificaTabuleiro();
-
 }
 
 
@@ -69,9 +70,7 @@ function verificaCasas(caso) {
   var background3 = casa3.style.background;
 
   if((background1 == background2 && background2 == background3) && background1 !== '') {
-    vencedor = jogador == 1 ? 2 : 1// Precisa trocar pois apos a jogada a variavel 'jogador' é trocada
-
-    resultado.innerHTML = `O jogador ${vencedor} venceu`;
+    resultado.innerHTML = `O jogador ${jogador} venceu`;
 
     jogo.removeEventListener('click', main);
 
