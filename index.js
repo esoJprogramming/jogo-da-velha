@@ -62,11 +62,11 @@ function verificaTabuleiro () {
     casoH1, casoH2, casoH3,
     casoV1, casoV2, casoV3,
     casoD1, casoD2
-  ].some(element => verificaCasas(element))
+  ].some(element => verificaCasas(element));
 
   if(variavel) 
     return true;
-    
+
   return false;
 }
 
