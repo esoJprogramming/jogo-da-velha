@@ -42,22 +42,32 @@ function main(e) {
 
 function verificaTabuleiro () {
   
-  if (verificaCasas(casoH1) ||
-      verificaCasas(casoH2) ||
-      verificaCasas(casoH3) ||
+  // if (verificaCasas(casoH1) ||
+  //     verificaCasas(casoH2) ||
+  //     verificaCasas(casoH3) ||
 
-      verificaCasas(casoV1) ||
-      verificaCasas(casoV2) ||
-      verificaCasas(casoV3) ||
+  //     verificaCasas(casoV1) ||
+  //     verificaCasas(casoV2) ||
+  //     verificaCasas(casoV3) ||
 
-      verificaCasas(casoD1) ||
-      verificaCasas(casoD2)
-  ) {
+  //     verificaCasas(casoD1) ||
+  //     verificaCasas(casoD2)
+  // ) {
+  //   return true;
+  // }
+
+  // return false;
+
+  const variavel = [
+    casoH1, casoH2, casoH3,
+    casoV1, casoV2, casoV3,
+    casoD1, casoD2
+  ].some(element => verificaCasas(element))
+
+  if(variavel) 
     return true;
-  }
-
+    
   return false;
-
 }
 
 function verificaCasas(caso) {
