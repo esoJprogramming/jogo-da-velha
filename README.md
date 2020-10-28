@@ -6,7 +6,7 @@
 
 Feito em: **HTML - CSS - JAVASCRIPT**
 
-###Instruções para jogar
+### Instruções para jogar
 
 - Clone este repositório (ou baixe)
 - Abra o arquivo jogodavelha.html (o jogo será aberto em seu navegador)
