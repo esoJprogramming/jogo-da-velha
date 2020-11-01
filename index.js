@@ -2,6 +2,8 @@ var jogador = 1;
 var empate = 0; 
 
 var resultado = document.querySelector('div#resultado');
+var jogador1 = document.querySelector('div#jogador1');
+var jogador2 = document.querySelector('div#jogador2');
 var jogo = document.querySelector('div#jogo');
 var botaoReiniciar = document.querySelector('button#reiniciar');
 
@@ -21,6 +23,12 @@ casoD2 = [3, 5, 7];
 
 jogo.addEventListener('click', main);
 
+pontuacao1 = Number(localStorage.getItem('jogador1'));
+pontuacao2 = Number(localStorage.getItem('jogador2'));
+
+jogador1.innerHTML = `${pontuacao1} pontos`;
+jogador2.innerHTML = `${pontuacao2} pontos`;
+
 function main(e) {
   var casa = e.target;
 
@@ -28,7 +36,7 @@ function main(e) {
     var bg = casa.style.background;
 
     if(bg === '' || bg === 'none') {
-    casa.style.background = (jogador == 1? 'url(assets/bola.svg) no-repeat center':'url(assets/xis.svg) no-repeat center');
+    casa.style.background = (jogador == 1 ? 'url(assets/bola.svg) no-repeat center':'url(assets/xis.svg) no-repeat center');
 
     verificaTabuleiro();
     
@@ -58,16 +66,11 @@ function verificaTabuleiro () {
 
   // return false;
 
-  const variavel = [
+  [
     casoH1, casoH2, casoH3,
     casoV1, casoV2, casoV3,
     casoD1, casoD2
   ].some(element => verificaCasas(element));
-
-  if(variavel) 
-    return true;
-
-  return false;
 }
 
 function verificaCasas(caso) {
@@ -81,6 +84,16 @@ function verificaCasas(caso) {
 
   if((background1 == background2 && background2 == background3) && background1 !== '') {
     resultado.innerHTML = `O jogador ${jogador} venceu`;
+
+    pontuacao = Number(localStorage.getItem(`jogador${jogador}`));
+
+    localStorage.setItem(`jogador${jogador}`, pontuacao + 1);
+
+    if (jogador === 1) {
+      jogador1.innerHTML = `${pontuacao + 1} pontos`;
+    } else {
+      jogador2.innerHTML = `${pontuacao + 1} pontos`;
+    }
 
     jogo.removeEventListener('click', main);
 
@@ -115,4 +128,12 @@ function verificaEmpate() {
 
     botaoReiniciar.disabled = false;
   }
+}
+
+function reiniciarPlacar() {
+  localStorage.setItem('jogador1', 0);
+  localStorage.setItem('jogador2', 0);
+  
+  jogador1.innerHTML = 0 + ` pontos`;
+  jogador2.innerHTML = 0 + ` pontos`;
 }
