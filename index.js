@@ -66,11 +66,17 @@ function verificaTabuleiro () {
 
   // return false;
 
-  [
+  const resposta = [
     casoH1, casoH2, casoH3,
     casoV1, casoV2, casoV3,
     casoD1, casoD2
   ].some(element => verificaCasas(element));
+
+  if (resposta) {
+    return true;
+  }
+
+  return false;
 }
 
 function verificaCasas(caso) {
@@ -108,7 +114,6 @@ function reiniciar () {
   jogador = 1;
   resultado.innerHTML = ``;
 
-
   for (var i = 1; i < 10; i++) {
     const casa = document.querySelector('div#casa'+i);
 
@@ -123,8 +128,10 @@ function reiniciar () {
 function verificaEmpate() {
   empate++;
   if(empate == 9 && !verificaTabuleiro()) {
-    
+
     resultado.innerHTML = `Empate`;
+
+    jogo.removeEventListener('click', main);
 
     botaoReiniciar.disabled = false;
   }
