@@ -72,10 +72,8 @@ function verificaTabuleiro () {
     casoD1, casoD2
   ].some(element => verificaCasas(element));
 
-  if (resposta) {
-    return true;
-  }
-
+  if (resposta) return true;
+  
   return false;
 }
 
@@ -89,6 +87,9 @@ function verificaCasas(caso) {
   var background3 = casa3.style.background;
 
   if((background1 == background2 && background2 == background3) && background1 !== '') {
+
+    if (empate == 9) return true;
+
     resultado.innerHTML = `O jogador ${jogador} venceu`;
 
     pontuacao = Number(localStorage.getItem(`jogador${jogador}`));
@@ -106,7 +107,7 @@ function verificaCasas(caso) {
     botaoReiniciar.disabled = false;
 
     return true;
-  }
+  } 
 }
 
 function reiniciar () {
